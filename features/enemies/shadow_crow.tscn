@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://features/enemies/corrupted_enemy.gd" id="1_enemy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hitbox"]
+radius = 22.0
+
+[node name="ShadowCrow" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_enemy")
+enemy_name_bm = "Gagak Bayang Kegelapan"
+enemy_name_en = "Kegelapan Shadow Crow"
+max_hp = 30
+move_speed = 145.0
+patrol_distance = 160.0
+contact_damage = 14
+is_flying = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_body")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BodyPoly" type="Polygon2D" parent="Visuals"]
+position = Vector2(0, -20)
+color = Color(0.16, 0.09, 0.24, 1)
+polygon = PackedVector2Array(-26, -8, -8, -22, 16, -12, 28, 0, 12, 10, -18, 12)
+
+[node name="WingPoly" type="Polygon2D" parent="Visuals"]
+position = Vector2(0, -24)
+color = Color(0.48, 0.14, 0.42, 0.9)
+polygon = PackedVector2Array(-14, 0, -4, -24, 14, -4)
+
+[node name="EyePoly" type="Polygon2D" parent="Visuals"]
+position = Vector2(0, -20)
+color = Color(1, 0.3, 0.5, 1)
+polygon = PackedVector2Array(10, -6, 16, -6, 16, -2, 10, -2)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(0, -20)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_hitbox")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -110.0
+offset_top = -64.0
+offset_right = 110.0
+offset_bottom = -42.0
+theme_override_font_sizes/font_size = 11
+text = "Gagak Bayang"
+horizontal_alignment = 1

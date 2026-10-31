@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://features/enemies/corrupted_enemy.gd" id="1_enemy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(48, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(54, 42)
+
+[node name="CorruptedBoar" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BodyPoly" type="Polygon2D" parent="Visuals"]
+color = Color(0.24, 0.12, 0.32, 1)
+polygon = PackedVector2Array(-24, 0, -26, -26, -8, -38, 18, -34, 28, -14, 24, 0)
+
+[node name="InkCrest" type="Polygon2D" parent="Visuals"]
+color = Color(0.58, 0.16, 0.48, 1)
+polygon = PackedVector2Array(-18, -32, -8, -46, 2, -34, 10, -44, 16, -32)
+
+[node name="TuskPoly" type="Polygon2D" parent="Visuals"]
+color = Color(0.95, 0.9, 0.78, 1)
+polygon = PackedVector2Array(20, -10, 34, -22, 26, -6)
+
+[node name="EyePoly" type="Polygon2D" parent="Visuals"]
+color = Color(1, 0.25, 0.45, 1)
+polygon = PackedVector2Array(10, -26, 18, -26, 18, -20, 10, -20)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(0, -20)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -110.0
+offset_top = -66.0
+offset_right = 110.0
+offset_bottom = -44.0
+theme_override_font_sizes/font_size = 11
+text = "Babi Hutan Kegelapan"
+horizontal_alignment = 1

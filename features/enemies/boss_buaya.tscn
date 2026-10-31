@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://features/enemies/boss_buaya.gd" id="1_boss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(136, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(148, 62)
+
+[node name="BossBuaya" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BodyPoly" type="Polygon2D" parent="Visuals"]
+color = Color(0.16, 0.28, 0.22, 1)
+polygon = PackedVector2Array(-72, 0, -56, -44, 18, -52, 68, -28, 68, 0)
+
+[node name="ScalesPoly" type="Polygon2D" parent="Visuals"]
+color = Color(0.62, 0.16, 0.48, 1)
+polygon = PackedVector2Array(-48, -42, -36, -60, -24, -44, -10, -64, 4, -46, 18, -60, 30, -42)
+
+[node name="JawPoly" type="Polygon2D" parent="Visuals"]
+position = Vector2(28, -24)
+color = Color(0.24, 0.42, 0.32, 1)
+polygon = PackedVector2Array(0, -14, 54, -8, 48, 6, 0, 6)
+
+[node name="EyePoly" type="Polygon2D" parent="Visuals"]
+color = Color(1, 0.22, 0.38, 1)
+polygon = PackedVector2Array(22, -42, 34, -42, 34, -34, 22, -34)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(0, -28)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="StatusLabel" type="Label" parent="."]
+offset_left = -200.0
+offset_top = -92.0
+offset_right = 200.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(1, 0.88, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "Sang Buaya Hitam"
+horizontal_alignment = 1

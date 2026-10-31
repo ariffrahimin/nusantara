@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://features/world/hazard_zone.gd" id="1_hazard"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hazard"]
+size = Vector2(160, 28)
+
+[node name="HazardZone" type="Area2D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource("1_hazard")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_hazard")
+
+[node name="InkBase" type="Polygon2D" parent="."]
+color = Color(0.11, 0.05, 0.16, 0.95)
+polygon = PackedVector2Array(-80, 0, -80, -12, 80, -12, 80, 0)
+
+[node name="Spikes" type="Polygon2D" parent="."]
+color = Color(0.55, 0.14, 0.36, 1)
+polygon = PackedVector2Array(-76, -12, -60, -30, -44, -12, -28, -32, -12, -12, 4, -30, 20, -12, 36, -32, 52, -12, 68, -30, 76, -12)
