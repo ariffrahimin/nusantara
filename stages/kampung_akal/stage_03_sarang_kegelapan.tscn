@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://stages/kampung_akal/stage_controller.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://features/world/platform_block.tscn" id="2_plat"]
+[ext_resource type="PackedScene" path="res://features/player/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://features/world/lore_fragment.tscn" id="4_lore"]
+[ext_resource type="PackedScene" path="res://features/world/penunggu_shrine.tscn" id="5_shrine"]
+[ext_resource type="PackedScene" path="res://features/world/hazard_zone.tscn" id="6_hazard"]
+[ext_resource type="PackedScene" path="res://features/enemies/corrupted_boar.tscn" id="7_boar"]
+[ext_resource type="PackedScene" path="res://features/enemies/shadow_crow.tscn" id="8_crow"]
+[ext_resource type="PackedScene" path="res://features/world/stage_exit.tscn" id="9_exit"]
+[ext_resource type="PackedScene" path="res://features/ui/hud.tscn" id="10_hud"]
+
+[node name="Stage03SarangKegelapan" type="Node2D"]
+script = ExtResource("1_stage")
+stage_index = 3
+sky_color = Color(0.11, 0.09, 0.16, 1)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground1" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(340, 560)
+size = Vector2(740, 64)
+fill_color = Color(0.22, 0.18, 0.28, 1)
+top_trim_color = Color(0.62, 0.36, 0.72, 1)
+
+[node name="RuinsPlatform1" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(580, 430)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.32, 0.22, 0.36, 1)
+top_trim_color = Color(0.85, 0.65, 0.32, 1)
+
+[node name="Ground2" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1300, 560)
+size = Vector2(860, 64)
+fill_color = Color(0.22, 0.18, 0.28, 1)
+top_trim_color = Color(0.62, 0.36, 0.72, 1)
+
+[node name="RuinsPlatform2" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1180, 430)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.32, 0.22, 0.36, 1)
+top_trim_color = Color(0.85, 0.65, 0.32, 1)
+
+[node name="RuinsUpper" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1480, 310)
+size = Vector2(280, 20)
+one_way = true
+fill_color = Color(0.32, 0.22, 0.36, 1)
+top_trim_color = Color(0.85, 0.65, 0.32, 1)
+
+[node name="Ground3" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(2360, 540)
+size = Vector2(880, 64)
+fill_color = Color(0.22, 0.18, 0.28, 1)
+top_trim_color = Color(0.62, 0.36, 0.72, 1)
+
+[node name="RuinsOverlook" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(2280, 400)
+size = Vector2(280, 20)
+one_way = true
+fill_color = Color(0.32, 0.22, 0.36, 1)
+top_trim_color = Color(0.85, 0.65, 0.32, 1)
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="InkPool1" parent="Hazards" instance=ExtResource("6_hazard")]
+position = Vector2(790, 610)
+
+[node name="InkPool2" parent="Hazards" instance=ExtResource("6_hazard")]
+position = Vector2(1820, 610)
+
+[node name="Shrines" type="Node2D" parent="."]
+
+[node name="Shrine1" parent="Shrines" instance=ExtResource("5_shrine")]
+position = Vector2(960, 560)
+shrine_name_bm = "Keramat Rimba Lama"
+shrine_name_en = "Ancient Jungle Shrine"
+
+[node name="Shrine2" parent="Shrines" instance=ExtResource("5_shrine")]
+position = Vector2(2020, 540)
+shrine_name_bm = "Keramat Ambang Muara"
+shrine_name_en = "Estuary Threshold Shrine"
+
+[node name="LoreFragments" type="Node2D" parent="."]
+
+[node name="Lore1" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(580, 430)
+lore_id = &"ka_s3_01"
+
+[node name="Lore2" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(1180, 430)
+lore_id = &"ka_s3_02"
+
+[node name="Lore3" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(1480, 310)
+lore_id = &"ka_s3_03"
+
+[node name="Lore4" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(1660, 560)
+lore_id = &"ka_s3_04"
+
+[node name="Lore5" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(2280, 400)
+lore_id = &"ka_s3_05"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Boar1" parent="Enemies" instance=ExtResource("7_boar")]
+position = Vector2(520, 560)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("7_boar")]
+position = Vector2(1320, 560)
+
+[node name="Crow1" parent="Enemies" instance=ExtResource("8_crow")]
+position = Vector2(1480, 390)
+
+[node name="Boar3" parent="Enemies" instance=ExtResource("7_boar")]
+position = Vector2(2360, 540)
+
+[node name="Crow2" parent="Enemies" instance=ExtResource("8_crow")]
+position = Vector2(2420, 350)
+
+[node name="StageExit" parent="." instance=ExtResource("9_exit")]
+position = Vector2(2680, 540)
+target_stage_index = 4
+gate_title_bm = "⚔️ Ke Lubuk Bos: Sang Buaya Hitam"
+gate_title_en = "⚔️ To Boss Lair: Sang Buaya Hitam"
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(130, 550)
+
+[node name="HUD" parent="." instance=ExtResource("10_hud")]
+stage_number = 3
+stage_title_bm = "Peringkat 3: Sarang Kegelapan"
+stage_title_en = "Stage 3: Heart of Corruption"

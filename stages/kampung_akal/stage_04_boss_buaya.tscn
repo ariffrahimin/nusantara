@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://stages/kampung_akal/stage_controller.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://features/world/platform_block.tscn" id="2_plat"]
+[ext_resource type="PackedScene" path="res://features/player/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://features/world/penunggu_shrine.tscn" id="4_shrine"]
+[ext_resource type="PackedScene" path="res://features/enemies/boss_buaya.tscn" id="5_boss"]
+[ext_resource type="PackedScene" path="res://features/world/stage_exit.tscn" id="6_exit"]
+[ext_resource type="PackedScene" path="res://features/ui/hud.tscn" id="7_hud"]
+
+[node name="Stage04BossBuaya" type="Node2D"]
+script = ExtResource("1_stage")
+stage_index = 4
+sky_color = Color(0.08, 0.11, 0.14, 1)
+
+[node name="BossHint" type="Label" parent="."]
+offset_left = 220.0
+offset_top = 230.0
+offset_right = 1060.0
+offset_bottom = 300.0
+theme_override_colors/font_color = Color(1, 0.92, 0.58, 0.95)
+theme_override_font_sizes/font_size = 15
+text = "⚔️ PERTEMPURAN BOS: SANG BUAYA HITAM\nTip Sang Kancil: Pasang Umpan [K] di hadapan Sang Buaya sebelum ia menerkam untuk memukaunya (1.5x kerosakan),\natau guna Elak Sempurna [Left Shift / L] & pelantar kayu di atas!"
+horizontal_alignment = 1
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="ArenaFloor" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(680, 580)
+size = Vector2(1480, 72)
+fill_color = Color(0.18, 0.24, 0.22, 1)
+top_trim_color = Color(0.52, 0.78, 0.62, 1)
+
+[node name="LeftWall" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(-40, 260)
+size = Vector2(64, 680)
+
+[node name="RightWall" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1400, 260)
+size = Vector2(64, 680)
+
+[node name="LeftPerch" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(360, 440)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.92, 0.74, 0.32, 1)
+
+[node name="RightPerch" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(960, 440)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.92, 0.74, 0.32, 1)
+
+[node name="ShrineArena" parent="." instance=ExtResource("4_shrine")]
+position = Vector2(140, 580)
+shrine_name_bm = "Keramat Muara Suci (Isi Semula Umpan [E])"
+shrine_name_en = "Sacred Estuary Shrine (Refill Traps [E])"
+
+[node name="BossBuaya" parent="." instance=ExtResource("5_boss")]
+position = Vector2(980, 580)
+
+[node name="VictoryExit" parent="." instance=ExtResource("6_exit")]
+position = Vector2(1260, 580)
+target_stage_index = 5
+gate_title_bm = "Gerbang Kemenangan Kampung Akal"
+gate_title_en = "Kampung Akal Victory Gate"
+locked_until_boss_defeated = true
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(220, 570)
+
+[node name="HUD" parent="." instance=ExtResource("7_hud")]
+stage_number = 4
+stage_title_bm = "Peringkat 4 (BOS): Lubuk Sang Buaya Hitam"
+stage_title_en = "Stage 4 (BOSS): Lair of Sang Buaya Hitam"

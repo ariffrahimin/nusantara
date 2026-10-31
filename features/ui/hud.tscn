@@ -1,0 +1,341 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://features/ui/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="RootControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="MarginContainer" parent="RootControl"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 86.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="RootControl/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HeroBox" type="VBoxContainer" parent="RootControl/TopBar/HBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+
+[node name="HeroName" type="Label" parent="RootControl/TopBar/HBox/HeroBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.52, 1)
+theme_override_font_sizes/font_size = 16
+text = "🦌 Sang Kancil (Trickster / Scout)"
+
+[node name="HPBar" type="ProgressBar" parent="RootControl/TopBar/HBox/HeroBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 20)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="RootControl/TopBar/HBox/HeroBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "HP: 100 / 100"
+
+[node name="StatsBox" type="VBoxContainer" parent="RootControl/TopBar/HBox"]
+layout_mode = 2
+
+[node name="TrapLabel" type="Label" parent="RootControl/TopBar/HBox/StatsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.98, 0.72, 1)
+theme_override_font_sizes/font_size = 15
+text = "🌿 Umpan Kancil [K]: 3 / 3"
+
+[node name="LoreLabel" type="Label" parent="RootControl/TopBar/HBox/StatsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.62, 1)
+theme_override_font_sizes/font_size = 15
+text = "📜 Hikayat: 0 / 5"
+
+[node name="ControlsHint" type="Label" parent="RootControl/TopBar/HBox/StatsBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.84, 0.9, 0.85)
+theme_override_font_sizes/font_size = 12
+text = "[A/D] Gerak  [Space] Lompat  [J/Klik] Kombo 3x  [Shift/L] Elak Sempurna  [K] Umpan  [E] Interaksi  [Esc] Menu"
+
+[node name="Spacer" type="Control" parent="RootControl/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="StageLabel" type="Label" parent="RootControl/TopBar/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+text = "Kampung Akal"
+
+[node name="BossBox" type="VBoxContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 92.0
+offset_right = 260.0
+offset_bottom = 146.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="BossNameLabel" type="Label" parent="RootControl/BossBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.42, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+text = "Sang Buaya Hitam"
+horizontal_alignment = 1
+
+[node name="BossHPBar" type="ProgressBar" parent="RootControl/BossBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 22)
+layout_mode = 2
+max_value = 240.0
+value = 240.0
+
+[node name="PromptLabel" type="Label" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -64.0
+offset_right = 320.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.96, 0.65, 1)
+theme_override_font_sizes/font_size = 16
+text = "Tekan [E]"
+horizontal_alignment = 1
+
+[node name="ToastPanel" type="PanelContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -170.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="RootControl/ToastPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/ToastPanel/Margin"]
+layout_mode = 2
+
+[node name="ToastTitle" type="Label" parent="RootControl/ToastPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.45, 1)
+theme_override_font_sizes/font_size = 15
+text = "📜 Hikayat Ditemui"
+
+[node name="ToastBody" type="Label" parent="RootControl/ToastPanel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Butiran hikayat..."
+autowrap_mode = 3
+
+[node name="VictoryPanel" type="PanelContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -130.0
+offset_right = 260.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/VictoryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="RootControl/VictoryPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text = "✨ KAMPUNG AKAL DISUCIKAN! ✨"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="RootControl/VictoryPanel/VBox"]
+layout_mode = 2
+text = "Sang Kancil berjaya memperdaya Sang Buaya Hitam dan memulihkan cahaya Kampung Akal!\nMVP1 Selesai — Anda juga boleh masuk ke Gerbang Kemenangan di kanan pentas."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnVictoryMenu" type="Button" parent="RootControl/VictoryPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Kembali ke Menu Utama / Return to Main Menu"
+
+[node name="PausePanel" type="PanelContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -210.0
+offset_right = 250.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="RootControl/PausePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/PausePanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PauseTitle" type="Label" parent="RootControl/PausePanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 20
+text = "JEDA & PILIHAN BANTUAN (PAUSE & ASSIST)"
+horizontal_alignment = 1
+
+[node name="ChkSlowerEnemies" type="CheckBox" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bantuan: Pergerakan Musuh Lebih Perlahan (Slower Enemies)"
+
+[node name="ChkExtendedDodge" type="CheckBox" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bantuan: Tempoh Elak Lebih Panjang (Extended Dodge Window)"
+
+[node name="ChkDoubleJump" type="CheckBox" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bantuan: Lompat Berganda (Double Jump Assist)"
+
+[node name="ChkChallenger" type="CheckBox" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mod Pencabar: Musuh Lebih Kuat (Challenger Mode 1.5x Damage)"
+
+[node name="BtnOpenLore" type="Button" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "📜 Pustaka Hikayat (Lore Library)"
+
+[node name="BtnToggleLang" type="Button" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🌐 Tukar Bahasa: Bahasa Melayu / English"
+
+[node name="BtnResume" type="Button" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "▶ Sambung Permainan (Resume)"
+
+[node name="BtnMainMenu" type="Button" parent="RootControl/PausePanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "🏠 Menu Utama (Main Menu)"
+
+[node name="LoreModal" type="PanelContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -260.0
+offset_right = 420.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="RootControl/LoreModal"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/LoreModal/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="Label" parent="RootControl/LoreModal/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.45, 1)
+theme_override_font_sizes/font_size = 20
+text = "📜 PUSTAKA HIKAYAT KAMPUNG AKAL (15 FRAGMEN)"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="RootControl/LoreModal/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LoreListBox" type="VBoxContainer" parent="RootControl/LoreModal/Margin/VBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="BtnCloseLore" type="Button" parent="RootControl/LoreModal/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tutup Pustaka / Close Library"

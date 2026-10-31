@@ -1,0 +1,155 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://stages/kampung_akal/stage_controller.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://features/world/platform_block.tscn" id="2_plat"]
+[ext_resource type="PackedScene" path="res://features/player/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://features/world/lore_fragment.tscn" id="4_lore"]
+[ext_resource type="PackedScene" path="res://features/world/penunggu_shrine.tscn" id="5_shrine"]
+[ext_resource type="PackedScene" path="res://features/world/hazard_zone.tscn" id="6_hazard"]
+[ext_resource type="PackedScene" path="res://features/enemies/corrupted_boar.tscn" id="7_boar"]
+[ext_resource type="PackedScene" path="res://features/world/stage_exit.tscn" id="8_exit"]
+[ext_resource type="PackedScene" path="res://features/ui/hud.tscn" id="9_hud"]
+
+[node name="Stage01TepiSungai" type="Node2D"]
+script = ExtResource("1_stage")
+stage_index = 1
+sky_color = Color(0.11, 0.21, 0.19, 1)
+
+[node name="TutorialSigns" type="Node2D" parent="."]
+
+[node name="SignMove" type="Label" parent="TutorialSigns"]
+offset_left = 40.0
+offset_top = 420.0
+offset_right = 380.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0.95, 0.92, 0.72, 0.92)
+theme_override_font_sizes/font_size = 14
+text = "TUTORIAL KAMPUNG AKAL\n[A / D] Bergerak   |   [Space / W] Lompat (Tahan untuk tinggi)\n[S + Space] Turun dari pelantar kayu"
+
+[node name="SignLore" type="Label" parent="TutorialSigns"]
+offset_left = 460.0
+offset_top = 310.0
+offset_right = 780.0
+offset_bottom = 365.0
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 0.95)
+theme_override_font_sizes/font_size = 14
+text = "📜 Tekan [E] pada Skrol Hikayat\nMengumpul cerita mengusir dakwat Kegelapan!"
+
+[node name="SignTrapAndCombat" type="Label" parent="TutorialSigns"]
+offset_left = 1040.0
+offset_top = 410.0
+offset_right = 1480.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(0.65, 1, 0.84, 0.95)
+theme_override_font_sizes/font_size = 14
+text = "🦌 TAKTIK SANG KANCIL\n[K / Klik Kanan] Pasang Umpan untuk memperdaya musuh (1.5x kerosakan!)\n[J / Klik Kiri] Kombo 3-Pukulan   |   [Left Shift / L] Elak Sempurna"
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="GroundStart" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(360, 560)
+size = Vector2(820, 64)
+
+[node name="StiltLedge1" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(600, 440)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.86, 0.68, 0.32, 1)
+
+[node name="RiverStepping1" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(930, 520)
+size = Vector2(180, 32)
+
+[node name="GroundMid" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1480, 560)
+size = Vector2(760, 64)
+
+[node name="UpperSecretBranch" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1380, 340)
+size = Vector2(280, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.86, 0.68, 0.32, 1)
+
+[node name="StepToBranch" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(1150, 450)
+size = Vector2(160, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.86, 0.68, 0.32, 1)
+
+[node name="GroundEnd" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(2360, 540)
+size = Vector2(780, 64)
+
+[node name="HighLookout" parent="Platforms" instance=ExtResource("2_plat")]
+position = Vector2(2260, 410)
+size = Vector2(240, 20)
+one_way = true
+fill_color = Color(0.45, 0.31, 0.18, 1)
+top_trim_color = Color(0.86, 0.68, 0.32, 1)
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="RiverGapHazard1" parent="Hazards" instance=ExtResource("6_hazard")]
+position = Vector2(815, 610)
+
+[node name="RiverGapHazard2" parent="Hazards" instance=ExtResource("6_hazard")]
+position = Vector2(1910, 610)
+
+[node name="Shrines" type="Node2D" parent="."]
+
+[node name="ShrineRiverbank" parent="Shrines" instance=ExtResource("5_shrine")]
+position = Vector2(1060, 560)
+shrine_name_bm = "Keramat Penunggu Tebing Sungai"
+shrine_name_en = "Riverbank Penunggu Shrine"
+
+[node name="ShrineGate" parent="Shrines" instance=ExtResource("5_shrine")]
+position = Vector2(2060, 540)
+shrine_name_bm = "Keramat Pintu Dusun"
+shrine_name_en = "Orchard Gate Shrine"
+
+[node name="LoreFragments" type="Node2D" parent="."]
+
+[node name="Lore1" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(600, 440)
+lore_id = &"ka_s1_01"
+
+[node name="Lore2" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(930, 520)
+lore_id = &"ka_s1_02"
+
+[node name="Lore3" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(1380, 340)
+lore_id = &"ka_s1_03"
+
+[node name="Lore4" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(1740, 560)
+lore_id = &"ka_s1_04"
+
+[node name="Lore5" parent="LoreFragments" instance=ExtResource("4_lore")]
+position = Vector2(2260, 410)
+lore_id = &"ka_s1_05"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Boar1" parent="Enemies" instance=ExtResource("7_boar")]
+position = Vector2(1520, 560)
+
+[node name="Boar2" parent="Enemies" instance=ExtResource("7_boar")]
+position = Vector2(2380, 540)
+
+[node name="StageExit" parent="." instance=ExtResource("8_exit")]
+position = Vector2(2640, 540)
+target_stage_index = 2
+gate_title_bm = "Ke Peringkat 2: Dusun Terlarang"
+gate_title_en = "To Stage 2: Forbidden Orchard"
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(140, 550)
+
+[node name="HUD" parent="." instance=ExtResource("9_hud")]
+stage_number = 1
+stage_title_bm = "Peringkat 1: Tepi Sungai Akal"
+stage_title_en = "Stage 1: Riverbank of Wit"
