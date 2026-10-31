@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HeroData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/heroes/hero_data.gd" id="1_hero"]
+
+[resource]
+script = ExtResource("1_hero")
+hero_id = &"sang_kancil"
+display_name = "Sang Kancil"
+archetype_bm = "Sang Pintar / Pengakap"
+archetype_en = "Trickster / Scout"
+max_hp = 100
+move_speed = 310.0
+jump_height = 118.0
+time_to_apex = 0.34
+fall_gravity_multiplier = 1.75
+base_dodge_window = 0.16
+dodge_window_multiplier = 1.5
+max_ability_charges = 3
+combo_damage = PackedInt32Array(12, 16, 26)
